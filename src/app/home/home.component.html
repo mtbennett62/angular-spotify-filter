@@ -1,0 +1,35 @@
+<p>home works!</p>
+<button class="mat-stroked-button" (click)="this.getMyPlaylists()">Get Your Playlists</button>#
+<button class="mat-stroked-button" (click)="this.getFeaturedPlaylists()">Get Featured Playlists</button>
+
+
+<div ng-show="playlist" class="playlist user-playlist">
+    <h2>Playlists</h2>
+    <mat-list>
+        <mat-card *ngFor="let playlist of this.userPlaylists">
+            <mat-card-title>
+                {{playlist.name}}
+            </mat-card-title>
+            <img mat-card-sm-image src="{{playlist.images[0].url}}">
+        </mat-card>
+    </mat-list>
+</div>
+<div ng-show="featuredPlaylist" class="playlist featured-playlist">
+    <h2>Featured Playlists</h2>
+    <mat-list>
+        <mat-card *ngFor="let playlist of this.featuredPlaylists">
+            <mat-card-title>
+                {{playlist.name}}
+            </mat-card-title>
+            <img mat-card-sm-image src="{{playlist.images[0].url}}">
+<button class="mat-stroked-button"  (click)="this.getTracks(playlist.id)">Get Tracks</button>
+            <mat-list>
+                <mat-card *ngFor="let track of this.tracks">
+                    {{track.track.name}}
+<button class="mat-stroked-button"  (click)="this.getTrackInformation(track.track.href)">Get Track Information</button>
+                    
+                </mat-card>
+            </mat-list>
+        </mat-card>
+    </mat-list>
+</div>
